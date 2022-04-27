@@ -1,0 +1,11 @@
+framework module BambuserLiveShoppingOnetoOne {
+  umbrella header "BambuserLiveShoppingOnetoOne.h"
+
+  export *
+  module * { export * }
+}
+
+module BambuserLiveShoppingOnetoOne.Swift {
+    header "BambuserLiveShoppingOnetoOne-Swift.h"
+    requires objc
+}
