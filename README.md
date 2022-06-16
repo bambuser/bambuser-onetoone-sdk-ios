@@ -8,7 +8,7 @@
   <br/><br/>
 </div>
 
-# Live shopping one-to-one iOS SDK (PREPARATION FOR RELEASE)
+# Live shopping one-to-one iOS SDK
 
 ## About
 
