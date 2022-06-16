@@ -5,9 +5,9 @@
         "package": "BambuserLiveShoppingOnetoOne",
         "repositoryURL": "https://github.com/bambuser/bambuser-onetoone-sdk-ios",
         "state": {
-          "branch": "master",
-          "revision": "8a4c3392f986b6cc0b83acfb182b44d416581682",
-          "version": null
+          "branch": null,
+          "revision": "f928d9b65ce0dd8d8af83f2a70e859f6a80014f4",
+          "version": "0.1.0"
         }
       }
     ]
