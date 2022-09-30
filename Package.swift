@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "BambuserLiveShoppingOnetoOne",
     platforms: [
-        .iOS(.v15)
+        .iOS("14.3")
     ],
     products: [
         .library(
