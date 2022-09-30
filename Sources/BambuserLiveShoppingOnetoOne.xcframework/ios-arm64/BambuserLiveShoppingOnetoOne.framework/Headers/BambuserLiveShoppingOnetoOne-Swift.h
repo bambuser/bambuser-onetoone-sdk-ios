@@ -230,6 +230,7 @@ SWIFT_CLASS("_TtC28BambuserLiveShoppingOnetoOne21LiveShoppingAgentView")
 @class WKSecurityOrigin;
 @class WKFrameInfo;
 
+SWIFT_AVAILABILITY(ios,introduced=15.0)
 @interface LiveShoppingAgentView (SWIFT_EXTENSION(BambuserLiveShoppingOnetoOne)) <WKUIDelegate>
 - (void)webView:(WKWebView * _Nonnull)webView requestMediaCapturePermissionForOrigin:(WKSecurityOrigin * _Nonnull)origin initiatedByFrame:(WKFrameInfo * _Nonnull)frame type:(WKMediaCaptureType)type decisionHandler:(void (^ _Nonnull)(WKPermissionDecision))decisionHandler;
 @end
