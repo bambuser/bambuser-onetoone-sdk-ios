@@ -57,3 +57,12 @@ class HomeViewController: UIViewController {
     }
 
 }
+
+extension UIViewController {
+    /**
+     Easy acces to LiveShoppingAgentView while in UIWindow
+     */
+    func agentViewInWindow() -> LiveShoppingAgentView? {
+       return self.view.window?.subviews.first(where: { $0 is LiveShoppingAgentView }) as? LiveShoppingAgentView
+    }
+}

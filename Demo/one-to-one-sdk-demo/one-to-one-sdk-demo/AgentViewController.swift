@@ -18,9 +18,8 @@ class AgentViewController: UIViewController {
 
     var agentView: LiveShoppingAgentView?
     private let region: Region = // set region .global or .eu
-    private let organisationId = "set your organisation id here" // Our develop organisation
-    private let connectId = "booking id" // Add your meeting / booking id
-    public static let agentInWindow = false // An example when the LiveShoppingAgentView lives in the UIWindow BOTH as maximized and minimized
+    private let organisationId = "" // your organisation
+    private let connectId = "" // Add your meeting / booking id
 
     public init(view: LiveShoppingAgentView? = nil) {
         self.agentView = view
@@ -99,8 +98,19 @@ class AgentViewController: UIViewController {
         guard MinimizedState.shared.isMinimized == false else { return }
         guard let agentView = self.agentView else { return }
         // This path is taken when restoring agentView when in the HomeViewController
-        if AgentViewController.agentInWindow == false {
-            restoreAgentView(agentView: agentView)
+        restoreAgentView(agentView: agentView)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        guard let agentView = self.agentViewInWindow() else { return }
+        agentView.eventHandler = { [weak self] event in
+            if case .callStatusUpdate(let callStatus) = event {
+                if callStatus == .disconnected {
+                    if MinimizedState.shared.isMinimized == false {
+                        self?.restoreAgentView(agentView: agentView)
+                    }
+                }
+            }
         }
     }
 
@@ -108,6 +118,7 @@ class AgentViewController: UIViewController {
         print("Restore back as a subview")
         self.agentView = agentView
         view.addSubview(agentView)
+        self.tabBarController?.selectedIndex = 0
         agentView.eventHandler = { [weak self] event in
             if event == .didLoad {
                 self?.startButton.setTitle("Close agent tool", for: .normal)
@@ -128,13 +139,8 @@ class AgentViewController: UIViewController {
 
         createAgentView()
         guard let agentView = self.agentView else { return }
-        if AgentViewController.agentInWindow {
-            guard let window = self.view.window else { return }
-            window.addSubview(agentView)
-        } else {
-            view.addSubview(agentView)
-            setupAgentViewConstraints()
-        }
+        view.addSubview(agentView)
+        setupAgentViewConstraints()
         agentView.loadBooking(connectId: bookingTextField.text ?? connectId)
         startButton.setTitle("Loading...", for: .normal)
     }
@@ -142,15 +148,13 @@ class AgentViewController: UIViewController {
     func createAgentView() {
         agentView = LiveShoppingAgentView(region: region, organisationId: organisationId)
         agentView?.tapToMaximize = true
-        agentView?.minimizedOrigin = .topRight
+        agentView?.minimizedSize = CGSize(width: 180, height: 320)
+        agentView?.minimizedOrigin = .topLeft
         agentView?.eventHandler = { [weak self] event in
             if event == .didLoad {
                 self?.startButton.setTitle("Close agent tool", for: .normal)
             }
             print("Event: \(event)")
-        }
-        if AgentViewController.agentInWindow {
-            agentView?.frame = CGRect(x: 0, y: 50, width: self.view.frame.size.width, height: self.view.frame.size.height - 130)
         }
     }
 

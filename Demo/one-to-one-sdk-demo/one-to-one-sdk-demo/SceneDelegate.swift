@@ -57,11 +57,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension UINavigationController {
 
     public override var shouldAutorotate: Bool {
-        return true
+        return false
     }
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.allButUpsideDown
+        return UIInterfaceOrientationMask.portrait
     }
 
     public override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {

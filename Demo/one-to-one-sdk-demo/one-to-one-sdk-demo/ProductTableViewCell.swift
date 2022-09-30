@@ -6,24 +6,37 @@
 //
 
 import UIKit
+import BambuserLiveShoppingOnetoOne
 
 class ProductTableViewCell: UITableViewCell {
 
     var product: Product? {
         didSet {
-            titleLabel.text = product?.title
+            titleLabel.text = product?.name
             descriptionLabel.text = product?.description
             descriptionLabel.sizeToFit()
 
-            guard let url = product?.imageUrl else { return }
+            guard let url = product?.variations[0].imageUrls[0] else { return }
             ImageManager.shared.downloadImage(url: url) { [weak self] image in
                 guard let image: UIImage = image else { return }
-                if url == self?.product?.imageUrl {
+                if url == self?.product?.variations[0].imageUrls[0] {
                     DispatchQueue.main.async {
                         self?.productImage.image = image
                     }
                 }
             }
+        }
+    }
+
+    var inCall: Bool = false {
+        didSet {
+            callTagImageView.isHidden = !inCall
+        }
+    }
+
+    var inCart: Bool = false {
+        didSet {
+            cartTagImageView.isHidden = !inCart
         }
     }
 
@@ -55,6 +68,24 @@ class ProductTableViewCell: UITableViewCell {
         return imageView
     }()
 
+    private let callTagImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "phone")
+        imageView.tintColor = .darkGray
+        imageView.isHidden = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    private let cartTagImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "cart")
+        imageView.tintColor = .darkGray
+        imageView.isHidden = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -62,6 +93,8 @@ class ProductTableViewCell: UITableViewCell {
         addSubview(productImage)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
+        addSubview(callTagImageView)
+        addSubview(cartTagImageView)
 
         NSLayoutConstraint.activate([
             productImage.topAnchor.constraint(equalTo: topAnchor, constant: 5),
@@ -77,12 +110,20 @@ class ProductTableViewCell: UITableViewCell {
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -5),
             descriptionLabel.leftAnchor.constraint(equalTo: productImage.rightAnchor, constant: 5),
-            descriptionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10)
+            descriptionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+
+            callTagImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            callTagImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 5),
+            callTagImageView.heightAnchor.constraint(equalToConstant: 20),
+            callTagImageView.widthAnchor.constraint(equalToConstant: 20),
+
+            cartTagImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            cartTagImageView.leftAnchor.constraint(equalTo: callTagImageView.rightAnchor, constant: 5),
+            cartTagImageView.heightAnchor.constraint(equalToConstant: 20),
+            cartTagImageView.widthAnchor.constraint(equalToConstant: 20),
         ])
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { nil }
 
 }

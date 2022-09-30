@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		480FAC36280056DF0004562A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FAC35280056DF0004562A /* HomeViewController.swift */; };
-		485F8D38285B3AAB004D1465 /* BambuserLiveShoppingOnetoOne in Frameworks */ = {isa = PBXBuildFile; productRef = 485F8D37285B3AAB004D1465 /* BambuserLiveShoppingOnetoOne */; };
-		4869FCBD2824DB610092E8E4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869FCBC2824DB610092E8E4 /* Product.swift */; };
 		4869FCC02824DCEE0092E8E4 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869FCBF2824DCEE0092E8E4 /* Inventory.swift */; };
 		4869FCC22824FB030092E8E4 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869FCC12824FB030092E8E4 /* ProductTableViewCell.swift */; };
 		4869FCC82825433B0092E8E4 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869FCC72825433B0092E8E4 /* ImageManager.swift */; };
@@ -19,13 +17,14 @@
 		48A0DCAE27F32B6F0086C255 /* AgentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A0DCAD27F32B6F0086C255 /* AgentViewController.swift */; };
 		48A0DCB327F32B710086C255 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A0DCB227F32B710086C255 /* Assets.xcassets */; };
 		48A0DCB627F32B710086C255 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A0DCB427F32B710086C255 /* LaunchScreen.storyboard */; };
+		48A0DCC227F32F900086C255 /* BambuserLiveShoppingOnetoOne in Frameworks */ = {isa = PBXBuildFile; productRef = 48A0DCC127F32F900086C255 /* BambuserLiveShoppingOnetoOne */; };
 		48BB2F7328293F4800FBED66 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BB2F7228293F4800FBED66 /* ProductViewController.swift */; };
+		48BE4E4E28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne in Frameworks */ = {isa = PBXBuildFile; productRef = 48BE4E4D28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne */; };
 		48BEDF792822379000ECA12F /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEDF782822379000ECA12F /* InventoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		480FAC35280056DF0004562A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		4869FCBC2824DB610092E8E4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		4869FCBF2824DCEE0092E8E4 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		4869FCC12824FB030092E8E4 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		4869FCC72825433B0092E8E4 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -46,7 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				485F8D38285B3AAB004D1465 /* BambuserLiveShoppingOnetoOne in Frameworks */,
+				48BE4E4E28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne in Frameworks */,
+				48A0DCC227F32F900086C255 /* BambuserLiveShoppingOnetoOne in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				4869FCBF2824DCEE0092E8E4 /* Inventory.swift */,
-				4869FCBC2824DB610092E8E4 /* Product.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -123,7 +122,8 @@
 			);
 			name = "one-to-one-sdk-demo";
 			packageProductDependencies = (
-				485F8D37285B3AAB004D1465 /* BambuserLiveShoppingOnetoOne */,
+				48A0DCC127F32F900086C255 /* BambuserLiveShoppingOnetoOne */,
+				48BE4E4D28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne */,
 			);
 			productName = "one-to-one-sdk-demo";
 			productReference = 48A0DCA627F32B6F0086C255 /* one-to-one-sdk-demo.app */;
@@ -154,7 +154,7 @@
 			);
 			mainGroup = 48A0DC9D27F32B6F0086C255;
 			packageReferences = (
-				485F8D36285B3AAB004D1465 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */,
+				48BE4E4C28E6DD3A00382E36 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */,
 			);
 			productRefGroup = 48A0DCA727F32B6F0086C255 /* Products */;
 			projectDirPath = "";
@@ -192,7 +192,6 @@
 				48BEDF792822379000ECA12F /* InventoryViewController.swift in Sources */,
 				480FAC36280056DF0004562A /* HomeViewController.swift in Sources */,
 				489B595928254F170007A97F /* MeetingViewController.swift in Sources */,
-				4869FCBD2824DB610092E8E4 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +341,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -374,7 +373,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -412,20 +411,24 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		485F8D36285B3AAB004D1465 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */ = {
+		48BE4E4C28E6DD3A00382E36 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bambuser/bambuser-onetoone-sdk-ios";
 			requirement = {
-				kind = exactVersion;
-				version = 0.1.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		485F8D37285B3AAB004D1465 /* BambuserLiveShoppingOnetoOne */ = {
+		48A0DCC127F32F900086C255 /* BambuserLiveShoppingOnetoOne */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 485F8D36285B3AAB004D1465 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */;
+			productName = BambuserLiveShoppingOnetoOne;
+		};
+		48BE4E4D28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BE4E4C28E6DD3A00382E36 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */;
 			productName = BambuserLiveShoppingOnetoOne;
 		};
 /* End XCSwiftPackageProductDependency section */

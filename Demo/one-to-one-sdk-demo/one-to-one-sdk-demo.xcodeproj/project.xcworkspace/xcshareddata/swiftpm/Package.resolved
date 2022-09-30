@@ -1,16 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "BambuserLiveShoppingOnetoOne",
-        "repositoryURL": "https://github.com/bambuser/bambuser-onetoone-sdk-ios",
-        "state": {
-          "branch": null,
-          "revision": "f928d9b65ce0dd8d8af83f2a70e859f6a80014f4",
-          "version": "0.1.0"
-        }
+  "pins" : [
+    {
+      "identity" : "bambuser-onetoone-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bambuser/bambuser-onetoone-sdk-ios",
+      "state" : {
+        "revision" : "603446a9bc3548ee2fac3e457365d82c02fa87e5",
+        "version" : "0.2.0"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }
