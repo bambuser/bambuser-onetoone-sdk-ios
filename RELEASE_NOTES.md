@@ -1,9 +1,25 @@
 # Release Notes
 
-This SDK is currently an experimental alpha.
+This SDK is currently an experimental beta.
 
 It will follow semver only after the first major release. Until then, it may (and most probably will) have breaking changes between minor versions. 
-Make sure to always use the latest version of the SDK. There is no guaranteed backwards compatibility while in alpha.
+Make sure to always use the latest version of the SDK. There is no guaranteed backwards compatibility while in beta.
+
+## Release 0.3.0
+
+This is the first beta release. The SDK now includes support for SSO.
+
+### ✨ New features
+
+* API for SSO
+* A new property `AgentEvent.enableSSO` and a new parameter `enableSSO` in `LiveShoppingAgentView.init` for enabling SSO login.
+* A new event `AgentEvent.refreshSsoToken(responseId:)` emitted when SSO token is not set or needs a refresh.
+* A new function `LiveShoppingAgentView.refreshSsoToken(ssoToken:, responseId:)` to set new SSO token.
+* A new event `AgentEvent.unauthorized` at failed SSO login.
+
+### 🐛 Known issues
+
+* on iOS < 15.0 LiveShoppingAgentView asks for camera and microphone permission every time it is loaded.
 
 ## Release 0.2.0
 
