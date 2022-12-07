@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>issuer</key>
+	<string>https://bambuser.okta.com</string>
+	<key>clientId</key>
+	<string>0oa5j8hcyhLFmYdqn417</string>
+	<key>redirectUri</key>
+	<string>BambuserAgentSDKDemo://login/callback</string>
+	<key>logoutRedirectUri</key>
+	<string>BambuserAgentSDKDemo://logout</string>
+	<key>scopes</key>
+	<string>openid email groups profile</string>
+</dict>
+</plist>

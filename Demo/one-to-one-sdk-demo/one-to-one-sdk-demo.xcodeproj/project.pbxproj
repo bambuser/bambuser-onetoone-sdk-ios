@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		480FAC36280056DF0004562A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FAC35280056DF0004562A /* HomeViewController.swift */; };
+		48307E542940ED620043AB66 /* BambuserLiveShoppingOnetoOne in Frameworks */ = {isa = PBXBuildFile; productRef = 48307E532940ED620043AB66 /* BambuserLiveShoppingOnetoOne */; };
 		4869FCC02824DCEE0092E8E4 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869FCBF2824DCEE0092E8E4 /* Inventory.swift */; };
 		4869FCC22824FB030092E8E4 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869FCC12824FB030092E8E4 /* ProductTableViewCell.swift */; };
 		4869FCC82825433B0092E8E4 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869FCC72825433B0092E8E4 /* ImageManager.swift */; };
@@ -19,8 +20,12 @@
 		48A0DCB627F32B710086C255 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A0DCB427F32B710086C255 /* LaunchScreen.storyboard */; };
 		48A0DCC227F32F900086C255 /* BambuserLiveShoppingOnetoOne in Frameworks */ = {isa = PBXBuildFile; productRef = 48A0DCC127F32F900086C255 /* BambuserLiveShoppingOnetoOne */; };
 		48BB2F7328293F4800FBED66 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BB2F7228293F4800FBED66 /* ProductViewController.swift */; };
-		48BE4E4E28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne in Frameworks */ = {isa = PBXBuildFile; productRef = 48BE4E4D28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne */; };
 		48BEDF792822379000ECA12F /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEDF782822379000ECA12F /* InventoryViewController.swift */; };
+		E47F465D292F9009008CEBCF /* OktaLoginUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F465C292F9009008CEBCF /* OktaLoginUtility.swift */; };
+		E47F4661292F9819008CEBCF /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = E47F4660292F9819008CEBCF /* Okta.plist */; };
+		E47F466A292FD511008CEBCF /* AuthFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = E47F4669292FD511008CEBCF /* AuthFoundation */; };
+		E47F466C292FD511008CEBCF /* OktaOAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = E47F466B292FD511008CEBCF /* OktaOAuth2 */; };
+		E47F466E292FD511008CEBCF /* WebAuthenticationUI in Frameworks */ = {isa = PBXBuildFile; productRef = E47F466D292FD511008CEBCF /* WebAuthenticationUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,8 @@
 		48A0DCB727F32B710086C255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48BB2F7228293F4800FBED66 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		48BEDF782822379000ECA12F /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
+		E47F465C292F9009008CEBCF /* OktaLoginUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OktaLoginUtility.swift; sourceTree = "<group>"; };
+		E47F4660292F9819008CEBCF /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,8 +52,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BE4E4E28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne in Frameworks */,
+				E47F466C292FD511008CEBCF /* OktaOAuth2 in Frameworks */,
+				E47F466A292FD511008CEBCF /* AuthFoundation in Frameworks */,
+				E47F466E292FD511008CEBCF /* WebAuthenticationUI in Frameworks */,
 				48A0DCC227F32F900086C255 /* BambuserLiveShoppingOnetoOne in Frameworks */,
+				48307E542940ED620043AB66 /* BambuserLiveShoppingOnetoOne in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +96,8 @@
 				48A0DCB227F32B710086C255 /* Assets.xcassets */,
 				48A0DCB427F32B710086C255 /* LaunchScreen.storyboard */,
 				48A0DCB727F32B710086C255 /* Info.plist */,
+				E47F465C292F9009008CEBCF /* OktaLoginUtility.swift */,
+				E47F4660292F9819008CEBCF /* Okta.plist */,
 			);
 			path = "one-to-one-sdk-demo";
 			sourceTree = "<group>";
@@ -123,7 +135,10 @@
 			name = "one-to-one-sdk-demo";
 			packageProductDependencies = (
 				48A0DCC127F32F900086C255 /* BambuserLiveShoppingOnetoOne */,
-				48BE4E4D28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne */,
+				E47F4669292FD511008CEBCF /* AuthFoundation */,
+				E47F466B292FD511008CEBCF /* OktaOAuth2 */,
+				E47F466D292FD511008CEBCF /* WebAuthenticationUI */,
+				48307E532940ED620043AB66 /* BambuserLiveShoppingOnetoOne */,
 			);
 			productName = "one-to-one-sdk-demo";
 			productReference = 48A0DCA627F32B6F0086C255 /* one-to-one-sdk-demo.app */;
@@ -154,7 +169,8 @@
 			);
 			mainGroup = 48A0DC9D27F32B6F0086C255;
 			packageReferences = (
-				48BE4E4C28E6DD3A00382E36 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */,
+				E47F4668292FD511008CEBCF /* XCRemoteSwiftPackageReference "okta-mobile-swift" */,
+				48307E522940ED620043AB66 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */,
 			);
 			productRefGroup = 48A0DCA727F32B6F0086C255 /* Products */;
 			projectDirPath = "";
@@ -171,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48A0DCB627F32B710086C255 /* LaunchScreen.storyboard in Resources */,
+				E47F4661292F9819008CEBCF /* Okta.plist in Resources */,
 				48A0DCB327F32B710086C255 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,6 +207,7 @@
 				4869FCC02824DCEE0092E8E4 /* Inventory.swift in Sources */,
 				48A0DCAC27F32B6F0086C255 /* SceneDelegate.swift in Sources */,
 				48BEDF792822379000ECA12F /* InventoryViewController.swift in Sources */,
+				E47F465D292F9009008CEBCF /* OktaLoginUtility.swift in Sources */,
 				480FAC36280056DF0004562A /* HomeViewController.swift in Sources */,
 				489B595928254F170007A97F /* MeetingViewController.swift in Sources */,
 			);
@@ -411,25 +429,48 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		48BE4E4C28E6DD3A00382E36 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */ = {
+		48307E522940ED620043AB66 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bambuser/bambuser-onetoone-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
+				minimumVersion = 0.3.0;
+			};
+		};
+		E47F4668292FD511008CEBCF /* XCRemoteSwiftPackageReference "okta-mobile-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/okta/okta-mobile-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		48307E532940ED620043AB66 /* BambuserLiveShoppingOnetoOne */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48307E522940ED620043AB66 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */;
+			productName = BambuserLiveShoppingOnetoOne;
+		};
 		48A0DCC127F32F900086C255 /* BambuserLiveShoppingOnetoOne */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BambuserLiveShoppingOnetoOne;
 		};
-		48BE4E4D28E6DD3A00382E36 /* BambuserLiveShoppingOnetoOne */ = {
+		E47F4669292FD511008CEBCF /* AuthFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 48BE4E4C28E6DD3A00382E36 /* XCRemoteSwiftPackageReference "bambuser-onetoone-sdk-ios" */;
-			productName = BambuserLiveShoppingOnetoOne;
+			package = E47F4668292FD511008CEBCF /* XCRemoteSwiftPackageReference "okta-mobile-swift" */;
+			productName = AuthFoundation;
+		};
+		E47F466B292FD511008CEBCF /* OktaOAuth2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E47F4668292FD511008CEBCF /* XCRemoteSwiftPackageReference "okta-mobile-swift" */;
+			productName = OktaOAuth2;
+		};
+		E47F466D292FD511008CEBCF /* WebAuthenticationUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E47F4668292FD511008CEBCF /* XCRemoteSwiftPackageReference "okta-mobile-swift" */;
+			productName = WebAuthenticationUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

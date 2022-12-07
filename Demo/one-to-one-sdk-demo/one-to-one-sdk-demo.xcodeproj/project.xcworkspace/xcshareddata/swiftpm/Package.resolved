@@ -5,8 +5,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/bambuser/bambuser-onetoone-sdk-ios",
       "state" : {
-        "revision" : "603446a9bc3548ee2fac3e457365d82c02fa87e5",
-        "version" : "0.2.0"
+        "revision" : "0eaa60efbabef913b163158abade62039f9d7c84",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "okta-mobile-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/okta/okta-mobile-swift",
+      "state" : {
+        "revision" : "74233f88157af01c12069ef960218be0ad4fe47a",
+        "version" : "1.1.2"
       }
     }
   ],

@@ -102,6 +102,16 @@ class AgentViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if OktaLoginUtility.shared.credential != nil {
+            tabBarController?.navigationItem.rightBarButtonItem = .init(
+                title: "Sign out",
+                style: .plain,
+                target: self,
+                action: #selector(signOut))
+        }
+
         guard let agentView = self.agentViewInWindow() else { return }
         agentView.eventHandler = { [weak self] event in
             if case .callStatusUpdate(let callStatus) = event {
@@ -145,15 +155,33 @@ class AgentViewController: UIViewController {
         startButton.setTitle("Loading...", for: .normal)
     }
 
+    @objc func signOut() {
+        tabBarController?.navigationItem.rightBarButtonItem = nil
+
+        agentView?.signOut()
+        OktaLoginUtility.shared.signOut()
+    }
+
     func createAgentView() {
-        agentView = LiveShoppingAgentView(region: region, organisationId: organisationId)
+        agentView = LiveShoppingAgentView(
+            region: region,
+            organisationId: organisationId,
+            enableSSO: OktaLoginUtility.shared.credential != nil
+        )
         agentView?.tapToMaximize = true
         agentView?.minimizedSize = CGSize(width: 180, height: 320)
         agentView?.minimizedOrigin = .topLeft
         agentView?.eventHandler = { [weak self] event in
-            if event == .didLoad {
+            switch event {
+            case .didLoad:
                 self?.startButton.setTitle("Close agent tool", for: .normal)
+            case .unauthorized:
+                self?.presentUnauthorizedAlert()
+            case .refreshSsoToken(responseId: let responseId):
+                self?.refreshSsoCredentials(responseId: responseId)
+            default: break
             }
+
             print("Event: \(event)")
         }
     }
@@ -167,6 +195,51 @@ class AgentViewController: UIViewController {
             agentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             agentView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 0)
         ])
+    }
+
+    private func refreshSsoCredentials(responseId: String) {
+        guard let credential = OktaLoginUtility.shared.credential else {
+            loginWithOkta(responseId: responseId)
+            return
+        }
+
+        // If token is expired or expires in the following minute it should be refreshed
+        if credential.token.isExpired || credential.token.expiresIn < 60 {
+            loginWithOkta(responseId: responseId)
+            return
+        }
+
+        guard let jwtToken = credential.token.idToken?.rawValue else { return }
+        self.agentView?.refreshSsoToken(
+            ssoToken: jwtToken,
+            responseId: responseId
+        )
+    }
+
+    private func loginWithOkta(responseId: String) {
+        Task {
+            do {
+                let credentials = try await OktaLoginUtility.shared.login(anchor: view.window)
+
+                guard let ssoToken = credentials.token.idToken?.rawValue
+                else { return }
+
+                self.agentView?.refreshSsoToken(
+                    ssoToken: ssoToken,
+                    responseId: responseId
+                )
+            } catch {
+                print("Failed to login with okta")
+            }
+        }
+    }
+
+    private func presentUnauthorizedAlert() {
+        let alert = UIAlertController(title: "Unauthorized", message: "Please try again", preferredStyle: .alert)
+        alert.addAction(.init(title: "OK", style: .cancel))
+        present(alert, animated: true)
+
+        signOut()
     }
 }
 
