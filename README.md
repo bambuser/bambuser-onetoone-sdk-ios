@@ -14,10 +14,10 @@
 
 BambuserLiveShoppingOneToOne SDK lets you add the Bambuser Live Video Shopping one to one Agent tool to your iOS application.
 
-## Alpha Version
+## Beta Version
 
-This project is currently in alpha. It is not yet production ready, it is merely meant for evaluation and testing purposes.
-Make sure to always use the latest version of the SDK. There is no guaranteed backwards compatibility while in alpha.
+This project is currently in beta. It is not yet production ready, it is merely meant for evaluation and testing purposes.
+Make sure to always use the latest version of the SDK. There is no guaranteed backwards compatibility while in beta.
 
 See the [release notes][ReleaseNotes] for status and progress.
 
