@@ -6,27 +6,27 @@ In your applications Info.plist file set a usage description for camera and micr
 
 
 Create a `LiveShoppingAgentView` and add it as a subview in a `UIViewController` or to current active `UIWindow`.
-```
+```swift
 let agentView = LiveShoppingAgentView(region: <region>, organisationId: <your organisation id>)
 agentView.frame = window.frame
 window.addSubview(agentView)
 ```
 
 Enable maximize mini-player by tap on the `LiveShoppingAgentView`.
-```
+```swift
 agentView.tapToMaximize = true
 ```
 Note, it is also possible to maximize a minimized player by calling `agentView.maximizeView()`.
 
 Set up a `EventHandler` for listening to events emmited from the `LiveShoppingAgentView`.
-```
+```swift
 agentView.eventHandler = { event in
     print("Event: \(event)")
 }
 ```
 
 Load a booking.
-```
+```swift
 agentView.loadBooking(connectId: <your booking id>)
 ```
 
@@ -64,7 +64,7 @@ In that action add the returned `LiveShoppingAgentView` back as a subview in des
 Note, if you are using constraints for layout the full sized agent tool. You need to set them again for the returned `LiveShoppingAgentView`.
 
 A good place to register a restore action is in the `UIViewController`s `viewWillAppear` method
-```
+```swift
 override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     MinimizedState.shared.registerRestoreAction { [weak self] agentView in
@@ -78,7 +78,7 @@ override func viewWillAppear(_ animated: Bool) {
 
 If a UIViewController is presented modaly while `LiveShoppingAgentView` is in minimized state, you need to call `MinimizedState.bringToFront()` if you want the agentView to be floating on top of your UI. A good place to do that is in the presented `UIViewController`s `viewWillAppear` method.
 
-```
+```swift
 override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     MinimizedState.shared.bringToFront()
@@ -103,7 +103,7 @@ defined attributes, `AttributeDefinition`, (E.g. size, color, ...) and its optio
 
 Below example on how to create a `Product` with two(2) `Variation`s.
 
-```
+```swift
 let productBag = try Product(
     attributes: [
         try AttributeDefinition(id: "id_Color", name: "Color", options: [
@@ -166,7 +166,7 @@ See demo project for more examples.
 Product in call management is handled via a Product Variations SKU(identifier). Except when adding a `Product` to a call
 then the complete `Product` with all its metadata is added.
 
-All function calls below are also available through `MinimizedState`` and `LiveShoppingAgentContext`.
+All function calls below are also available through `MinimizedState` and `LiveShoppingAgentContext`.
 
 Add product to call:
 `LiveShoppingAgentView.addProductToCall(product:completion:)`
@@ -236,7 +236,7 @@ If you intend to play audio / video in parallell with the agent tool you need to
 
 Set your applications `AVAudioSession.Category` to `.playback` with `AVAudioSession.CategoryOptions` to `.mixWithOthers` or `.duckOthers`.
 
-```
+```swift
 do {
     try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
     try AVAudioSession.sharedInstance().setActive(true)
@@ -249,7 +249,7 @@ do {
 If your audio / video playback starts prior to the `LiveShoppingAgentView.loadBooking(connectId:)` call it will be interrupted by the
 `LiveShoppingAgentView`. You can setup your app to listen on the `AVAudioSession.interruptionNotification` notification and start your audio / video playback again.
 
-```
+```swift
 // In your setup
 var previewStarted: Bool = false
 agentView.eventHandler = { [weak self] event in
@@ -293,7 +293,7 @@ when the `LiveShoppingAgent` disappears.
 ### Create a View
 
 To create a `LiveShoppingAgent` View:
-```
+```swift
 var agentView: some View {
     var agent = LiveShoppingAgent(region: <region>, organisationId: <your organisation id>, connectId: <your booking id>)
     agent.tapToMaximize = true
@@ -308,7 +308,7 @@ update your UI and not render the `LiveShoppingAgent` since it is now just a emp
 
 Inject the shared `LiveShoppingAgentContext` as a `@StateObject` and use the property `LiveShoppingAgentContext.isMinimized` to listen on miminized state changes.
 
-```
+```swift
 @StateObject private var agentContext = LiveShoppingAgentContext.shared
 
 var body: some View {
@@ -334,7 +334,7 @@ var agentView: some View {
 Can be used for rendering the UI in a similar way as `LiveShoppingAgentContext.isMinimized` state. 
 Mostly useful if one wants to navigate to a new `View` on restore.
 
-```
+```swift
 HStack {
     myView
 }
@@ -345,7 +345,7 @@ HStack {
 
 The same can be achieved using the `MinimizedState` singleton in `.onAppear()`
 
-```
+```swift
 HStack {
     myView
 }
@@ -358,7 +358,7 @@ HStack {
 
 and the corresponding `MinimizedStateResetRestoreModifier` to reset a restore action when a View disappears
 
-```
+```swift
 HStack {
     myView
 }
@@ -367,7 +367,7 @@ HStack {
 
 The same can be achieved using the `MinimizedState` singleton in `.onDisappear()`
 
-```
+```swift
 HStack {
     myView
 }
@@ -379,7 +379,7 @@ HStack {
 
 `BringAgentToFrontModifier` to move a minimized agent view to the front in the view stack
 
-```
+```swift
 var body: some View {
     HStack {
         myView
@@ -390,7 +390,7 @@ var body: some View {
 
 The same can be achieved using the `MinimizedState` singleton in `.onAppear()`
 
-```
+```swift
 var body: some View {
     HStack {
         myView
@@ -403,7 +403,7 @@ var body: some View {
 
 Listen to `AgentEvent`s using the `AgentEventHandlerModifier` modifier
 
-```
+```swift
 var body: some View {
     VStack {
         agentView
@@ -414,3 +414,39 @@ var body: some View {
 }
 ```
 
+## Authentication
+
+By default authentication is handled manually when the LiveShoppingAgentView is presented but there is also functionality to sign in the user automatically through SSO.
+
+After the user is authenticated and the JWT-token is available you can follow the following steps:
+
+1. When initiating `LiveShoppingAgentView`, set init parameter `enableSSO` to `true`.
+
+```swift
+agentView = LiveShoppingAgentView(
+    region: region,
+    organisationId: organisationId,
+    enableSSO: true
+)
+```
+
+2. Setting `enableSSO` to true will trigger the headless authentication flow from the SDK. Once the `LiveShoppingAgentView` has been presented it will send event `refreshSsoToken(responseId:)`. This event basically means that the agent tool expects a token, but the current token is nil or expired. Once this event is triggered you should create or refresh a JWT-Token. Once you have a new or refreshed JWT-token you should call `LiveShoppingAgentView` method `refreshSsoToken(ssoToken: String, responseId: String, completion: (error) -> ())`. This will tell the SDK to finish the authentication flow with supplied token.
+> ⚠️ The SDK will also call `refreshSsoToken(responseId:)` when the token has expired and it is expected that you respond with a new valid token.
+
+
+```swift
+agentView.eventHandler = { event in
+    switch event {
+    case .refreshSsoToken(responseId: let responseId):
+        yourJWTHandler.refreshToken { refreshedToken in
+            agentView.refreshSsoToken(
+                ssoToken: refreshedToken,
+                responseId: responseId
+            )
+        }
+    default: break
+    }
+}
+```
+
+3. If the token is valid and connected to a Bambuser account the SDK will start with the correct user signed in. If the token is not valid, or if any of the steps is incorrectly implemented, the SDK will send event `unauthorized`.
