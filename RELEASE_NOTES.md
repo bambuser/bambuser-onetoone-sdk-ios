@@ -1,9 +1,11 @@
 # Release Notes
 
-This SDK is currently an experimental beta.
+Make sure to always use the latest version of the SDK. There is no guaranteed backwards compatibility to the 0.x versions.
 
-It will follow semver only after the first major release. Until then, it may (and most probably will) have breaking changes between minor versions. 
-Make sure to always use the latest version of the SDK. There is no guaranteed backwards compatibility while in beta.
+## Release 1.0.0
+
+* Picture in Picture support
+* A new delegate `LiveShoppingAgentViewDelegate`
 
 ## Release 0.3.0
 
