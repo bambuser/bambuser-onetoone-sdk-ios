@@ -434,7 +434,7 @@
 			repositoryURL = "https://github.com/bambuser/bambuser-onetoone-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 		E47F4668292FD511008CEBCF /* XCRemoteSwiftPackageReference "okta-mobile-swift" */ = {

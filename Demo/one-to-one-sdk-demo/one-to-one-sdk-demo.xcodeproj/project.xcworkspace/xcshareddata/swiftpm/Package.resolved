@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/bambuser/bambuser-onetoone-sdk-ios",
       "state" : {
-        "revision" : "0eaa60efbabef913b163158abade62039f9d7c84",
-        "version" : "0.3.0"
+        "revision" : "64418a8edad83ee7a1cb0ce21e3018dd229b03aa",
+        "version" : "1.0.0"
       }
     },
     {

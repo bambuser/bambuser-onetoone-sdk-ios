@@ -8,7 +8,7 @@
 import UIKit
 import BambuserLiveShoppingOnetoOne
 
-class AgentViewController: UIViewController {
+class AgentViewController: UIViewController, LiveShoppingAgentViewDelegate {
 
     private let label = UILabel()
     private let startButton = UIButton()
@@ -24,6 +24,7 @@ class AgentViewController: UIViewController {
     public init(view: LiveShoppingAgentView? = nil) {
         self.agentView = view
         super.init(nibName: nil, bundle: nil)
+        self.agentView?.pipDelegate = self
     }
 
     required init?(coder: NSCoder) { nil }
@@ -124,6 +125,23 @@ class AgentViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let agentView = self.agentView else { return }
+        agentView.maximizeView()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard
+            let agentView = self.agentView,
+            agentView.callSessionStatus != .disconnected &&
+            agentView.callSessionStatus != .disconnecting &&
+            agentView.isMinimized == false
+        else { return }
+        agentView.minimizeView(hide: true)
+    }
+
     public func restoreAgentView(agentView: LiveShoppingAgentView) {
         print("Restore back as a subview")
         self.agentView = agentView
@@ -195,6 +213,11 @@ class AgentViewController: UIViewController {
             agentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             agentView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 0)
         ])
+    }
+    
+    //MARK: LiveShoppingAgentDelegate
+    func didStopPictureInPicture() {
+        // do whatever you want with agentview after restoration (it will appear in minimized mode)
     }
 
     private func refreshSsoCredentials(responseId: String) {
