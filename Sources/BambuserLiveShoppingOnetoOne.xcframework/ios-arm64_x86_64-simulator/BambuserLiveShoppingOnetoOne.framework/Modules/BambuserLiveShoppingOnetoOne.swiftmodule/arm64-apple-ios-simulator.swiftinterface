@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target arm64-apple-ios14.3-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BambuserLiveShoppingOnetoOne
 import AVFoundation
 @_exported import BambuserLiveShoppingOnetoOne
@@ -53,7 +53,11 @@ public struct Rating : Swift.Codable, Swift.Equatable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+public protocol LiveShoppingAgentViewDelegate : AnyObject {
+  func didStopPictureInPicture()
+}
 @objc @_Concurrency.MainActor(unsafe) public class LiveShoppingAgentView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) weak public var pipDelegate: BambuserLiveShoppingOnetoOne.LiveShoppingAgentViewDelegate?
   @_Concurrency.MainActor(unsafe) @objc override dynamic public var frame: CoreGraphics.CGRect {
     @_Concurrency.MainActor(unsafe) @objc get
     @_Concurrency.MainActor(unsafe) @objc set
@@ -93,9 +97,11 @@ public struct Rating : Swift.Codable, Swift.Equatable {
   }
   @_Concurrency.MainActor(unsafe) public var tapToMaximize: Swift.Bool
   @_Concurrency.MainActor(unsafe) public init(region: BambuserLiveShoppingOnetoOne.Region, organisationId: Swift.String, enableSSO: Swift.Bool = false)
+  @objc deinit
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) public func loadBooking(connectId: Swift.String)
   @_Concurrency.MainActor(unsafe) public func maximizeView()
+  @_Concurrency.MainActor(unsafe) public func minimizeView(hide: Swift.Bool = false)
   @_Concurrency.MainActor(unsafe) public func addProductToCall(product: BambuserLiveShoppingOnetoOne.Product, completion: @escaping (BambuserLiveShoppingOnetoOne.AgentError?) -> Swift.Void)
   @_Concurrency.MainActor(unsafe) public func getProductsInCall(completion: @escaping (Swift.Result<[Swift.String]?, BambuserLiveShoppingOnetoOne.AgentError>) -> Swift.Void)
   @_Concurrency.MainActor(unsafe) public func isProductInCall(sku: Swift.String, completion: @escaping (Swift.Result<Swift.Bool?, BambuserLiveShoppingOnetoOne.AgentError>) -> Swift.Void)
@@ -109,7 +115,6 @@ public struct Rating : Swift.Codable, Swift.Equatable {
   @_Concurrency.MainActor(unsafe) public func refreshSsoToken(ssoToken: Swift.String, responseId: Swift.String)
   @_Concurrency.MainActor(unsafe) public func signOut()
   @_Concurrency.MainActor(unsafe) public func decrementProductInCart(sku: Swift.String, completion: @escaping (BambuserLiveShoppingOnetoOne.AgentError?) -> Swift.Void)
-  @objc deinit
 }
 extension BambuserLiveShoppingOnetoOne.LiveShoppingAgentView : WebKit.WKNavigationDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, didFailProvisionalNavigation navigation: WebKit.WKNavigation!, withError error: Swift.Error)
