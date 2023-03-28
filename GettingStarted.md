@@ -47,7 +47,7 @@ Set the superview where the minimized agent view should live. Default is the age
 `agentView.minimizedSuperview = self.view.window`
 
 
-## Handling minmized state
+## Handling minimized state
 
 When a ``LiveShoppingAgentView`` is minimized it detaches itself from its current `superview` and is added to its `UIWindow` 
 or to ``LiveShoppingAgentView/minimizedSuperview`` if it is set.
@@ -281,6 +281,26 @@ nc.addObserver(self,
     }
 }
 ```
+
+# Picture in Picture
+
+How to setup and use Picture in Picture.
+
+## Overview
+
+The SDK comes with a Picture in Picture feature where the shoppers video can be set into Picture In Picture. It does
+not require any special setup other than enabling the Capability - Background mode `Audio, AirPlay, and Picture in Picture` to keep
+audio active while your app is backgrounded.
+
+## Usage
+
+Press the Picture in Picture icon in the upper right corner of the shoppers video to start Picture in Picture.
+When starting Picture in Picture, the `LiveShoppingAgentView` will be set to hidden in minimized mode.
+While in Picture in Picture the `LiveShoppingAgentView` is accessible through `MinimizedState` static singleton.
+
+When stopping Picture in Picture the `LiveShoppingAgentView` will remain in minimized state. It can then be restored back to maximized as described in [Handling minimized state](#Handling-minimized-state).
+
+Notification when Picture in Picture is stopped is communicated through `LiveShoppingAgentViewDelegate.didStopPictureInPicture()`.
 
 
 ## SwiftUI
