@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                 = "BambuserLiveShoppingOnetoOne"
-  s.version              = "0.3.0"
+  s.version              = "1.0.0"
   s.author               = { "Bambuser AB" => "support@bambuser.com" }
   s.homepage             = "https://github.com/bambuser/bambuser-onetoone-sdk-ios"
   s.summary              = "One to One agent tool SDK for iOS"
