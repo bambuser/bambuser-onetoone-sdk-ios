@@ -4,8 +4,14 @@ Make sure to always use the latest version of the SDK. There is no guaranteed ba
 
 ## Release 1.0.0
 
+### ✨ New features
+
 * Picture in Picture support
 * A new delegate `LiveShoppingAgentViewDelegate`
+
+### 🐛 Known issues
+
+* on iOS < 15.0 LiveShoppingAgentView asks for camera and microphone permission every time it is loaded.
 
 ## Release 0.3.0
 
